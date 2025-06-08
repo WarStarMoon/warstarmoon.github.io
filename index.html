@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索科技与生活的交织 | 我的个人博客</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#FF7D00',
+                        dark: '#1D2939',
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .hover-lift {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .hover-lift:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark antialiased">
+    <!-- 导航栏 -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between bg-white/90 backdrop-blur-md shadow-sm">
+            <a href="#" class="flex items-center space-x-2">
+                <span class="text-primary text-2xl"><i class="fa fa-pencil-square-o"></i></span>
+                <span class="font-bold text-xl">探索笔记</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="font-medium text-primary hover:text-primary/80 transition-colors">首页</a>
+                <a href="#articles" class="font-medium text-dark hover:text-primary transition-colors">文章</a>
+                <a href="#about" class="font-medium text-dark hover:text-primary transition-colors">关于我</a>
+                <a href="#contact" class="font-medium text-dark hover:text-primary transition-colors">联系方式</a>
+            </nav>
+            <button class="md:hidden text-dark text-xl" id="menuToggle">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full" id="mobileMenu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#" class="font-medium text-primary hover:text-primary/80 transition-colors py-2">首页</a>
+                <a href="#articles" class="font-medium text-dark hover:text-primary transition-colors py-2">文章</a>
+                <a href="#about" class="font-medium text-dark hover:text-primary transition-colors py-2">关于我</a>
+                <a href="#contact" class="font-medium text-dark hover:text-primary transition-colors py-2">联系方式</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section class="pt-28 pb-20 md:pt-36 md:pb-28 bg-gradient-to-br from-primary/5 to-primary/10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-dark mb-6">
+                    探索科技与生活的<span class="text-primary">无限可能</span>
+                </h1>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-600 mb-8">
+                    记录技术成长的点滴，分享生活中的美好瞬间
+                </p>
+                <a href="#articles" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition-all hover-lift">
+                    开始探索 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章区 -->
+    <section id="articles" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">精选文章</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">探索最新的技术趋势、开发经验和生活感悟</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 文章卡片 1 - 绝对路径图片 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover-lift">
+                    <div class="h-48 overflow-hidden">
+                        <img 
+                            src="https://picsum.photos/seed/tech1/800/600" 
+                            alt="现代化的工作环境，展示了最新的科技设备和舒适的办公空间"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">技术</span>
+                            <span class="text-xs text-gray-500"><i class="fa fa-calendar-o mr-1"></i> 2023-05-15</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 hover:text-primary transition-colors">
+                            <a href="#">Web开发中的最新趋势与最佳实践</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            探索2023年Web开发领域的最新趋势，包括前端框架、性能优化和用户体验设计的最佳实践。
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center">
+                            阅读更多 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 2 - 相对路径图片 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover-lift">
+                    <div class="h-48 overflow-hidden">
+                        <img 
+                            src="images/lifestyle.jpg" 
+                            alt="宁静的湖边小屋，周围环绕着绿树和清澈的湖水，展现出和谐的自然生活"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-xs font-medium bg-secondary/10 text-secondary px-3 py-1 rounded-full">生活</span>
+                            <span class="text-xs text-gray-500"><i class="fa fa-calendar-o mr-1"></i> 2023-06-02</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 hover:text-primary transition-colors">
+                            <a href="#">平衡技术与生活：开发者的自我管理之道</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            如何在追求技术进步的同时保持健康的生活方式？本文分享了我作为开发者的时间管理和自我调节经验。
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center">
+                            阅读更多 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 3 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover-lift">
+                    <div class="h-48 overflow-hidden">
+                        <img 
+                            src="https://picsum.photos/seed/project/800/600" 
+                            alt="团队协作场景，人们围坐在会议桌旁讨论项目，展示了合作的力量"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-xs font-medium bg-green-100 text-green-600 px-3 py-1 rounded-full">项目</span>
+                            <span class="text-xs text-gray-500"><i class="fa fa-calendar-o mr-1"></i> 2023-06-18</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 hover:text-primary transition-colors">
+                            <a href="#">开源项目实践：从构思到发布的完整流程</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            分享我开发第一个成功开源项目的经验，包括如何找到灵感、规划架构、吸引贡献者以及最终发布的全过程。
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center">
+                            阅读更多 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-2 px-6 rounded-lg transition-colors">
+                    查看更多文章 <i class="fa fa-angle-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-6">关于博主</h2>
+                        <p class="text-gray-600 mb-4">
+                            你好！我是一名热爱技术和生活的全栈开发者，目前专注于Web和移动应用开发。
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            这个博客是我记录技术学习和生活感悟的地方，希望通过分享我的经验和见解，能帮助到更多的人。
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 relative">
+                        <div class="relative z-10 rounded-xl overflow-hidden shadow-xl">
+                            <img 
+                                src="https://picsum.photos/seed/author/600/800" 
+                                alt="博主照片，一位面带微笑的年轻人坐在电脑前，背后是书架和绿植"
+                                class="w-full h-auto"
+                            >
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-primary/20 rounded-full -z-0"></div>
+                        <div class="absolute -top-6 -left-6 w-24 h-24 bg-secondary/20 rounded-full -z-0"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4">与我联系</h2>
+                <p class="text-gray-600">
+                    如果你有任何问题、建议或合作意向，欢迎随时联系我
+                </p>
+            </div>
+
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8 md:p-10">
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                placeholder="请输入你的姓名"
+                            >
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                                placeholder="请输入你的邮箱"
+                            >
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">主题</label>
+                        <input 
+                            type="text" 
+                            id="subject" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                            placeholder="请输入消息主题"
+                        >
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">消息</label>
+                        <textarea 
+                            id="message" 
+                            rows="5" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none"
+                            placeholder="请输入你的消息内容..."
+                        ></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button 
+                            type="submit" 
+                            class="w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition-all hover-lift"
+                        >
+                            发送消息 <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-primary text-2xl"><i class="fa fa-pencil-square-o"></i></span>
+                        <span class="font-bold text-xl">探索笔记</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        记录技术成长的点滴，分享生活中的美好瞬间
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="#articles" class="text-gray-400 hover:text-primary transition-colors">文章</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">关于我</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">联系方式</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">分类</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">技术</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">生活</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">项目</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">资源</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 探索笔记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'shadow-md');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2', 'shadow-md');
+            }
+        });
+
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuToggle.innerHTML = mobileMenu.classList.contains('hidden') 
+                ? '<i class="fa fa-bars"></i>' 
+                : '<i class="fa fa-times"></i>';
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 如果是移动端，点击后关闭菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuToggle.innerHTML = '<i class="fa fa-bars"></i>';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>    
